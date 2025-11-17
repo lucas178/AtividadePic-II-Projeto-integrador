@@ -73,6 +73,8 @@ const OrderScreen: React.FC<OrderScreenProps> = ({ setScreen, cart, onFinalizeOr
   const [changeForAmount, setChangeForAmount] = useState('');
   
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+  
+  const pixKey = 'a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8';
 
   const activeCart = useMemo(() => cart.filter(item => item.quantity > 0), [cart]);
   const subtotal = useMemo(() => activeCart.reduce((sum, item) => sum + item.cupcake.price * item.quantity, 0), [activeCart]);
@@ -140,7 +142,6 @@ const OrderScreen: React.FC<OrderScreenProps> = ({ setScreen, cart, onFinalizeOr
   };
 
   const handleCopyPix = () => {
-    const pixKey = 'a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8';
     navigator.clipboard.writeText(pixKey).then(() => {
         setIsPixCopied(true);
         setTimeout(() => setIsPixCopied(false), 2000);
@@ -246,11 +247,11 @@ const OrderScreen: React.FC<OrderScreenProps> = ({ setScreen, cart, onFinalizeOr
             <div className="text-center flex flex-col items-center space-y-4 animate-fade-in p-2 bg-slate-50 rounded-lg shadow-sm">
                 <h3 className="font-semibold text-slate-700">Pague com Pix</h3>
                 <div className="bg-white p-2 border border-slate-200 rounded-lg shadow-inner">
-                   <img src="https://generator.qrcodefacil.com/qrcodes/static-493645d40f9d028c06f4c36f9de55909.svg" alt="QR Code Pix" className="w-36 h-36" />
+                   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=${encodeURIComponent(pixKey)}`} alt="QR Code Pix" className="w-36 h-36" />
                 </div>
                 <p className="text-sm text-slate-600 max-w-xs">Use o app do seu banco para ler o QR Code ou copie o código abaixo.</p>
                 <div className="w-full p-2 bg-slate-200 rounded-lg text-xs text-slate-700 font-mono break-all">
-                   a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8
+                   {pixKey}
                 </div>
                 <button 
                     onClick={handleCopyPix}
