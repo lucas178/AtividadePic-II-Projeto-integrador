@@ -4,11 +4,11 @@ Links do projeto
 
 -Vídeo explicativo - 
 
-Dados para acesso a aba administrativa
-. Usuário: admin
-. Senha: admin123
+. Informações do projeto 
 
-. Informações do projeto
+Dados para acesso a aba administrativa 
+   . Usuário: admin
+   . Senha: admin123
 
 O aplicativo de cupcake tem como objetivo a exposição e venda virtual desses mini bolos adorados e difundidos por todo o mundo, para que o cliente tenha total acesso e visualização do que irá adquirir
 
