@@ -1,6 +1,16 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+. Cupcake Mani (app) - Projeto Integrador PIC II - Engenharia de Software
+
+Links do projeto
+
+-Vídeo explicativo - 
+
+Dados para acesso a aba administrativa
+. Usuário: admin
+. Senha: admin123
+
+. Informações do projeto
+
+O aplicativo de cupcake tem como objetivo a exposição e venda virtual desses mini bolos adorados e difundidos por todo o mundo, para que o cliente tenha total acesso e visualização do que irá adquirir
 
 # Run and deploy your AI Studio app
 
