@@ -105,7 +105,7 @@ const ProfileScreen: React.FC<{ setScreen: (screen: Screen) => void; }> = ({ set
   return (
     <div className="bg-slate-100 h-full flex flex-col">
       <Header title="MEU PERFIL" onBack={() => setScreen(Screen.Home)} />
-      <div className="p-6 space-y-6 flex-grow">
+      <div className="p-6 space-y-6 flex-grow overflow-y-auto">
         <div className="flex flex-col items-center space-y-4">
             <div className="w-24 h-24 rounded-full bg-slate-300 flex items-center justify-center shadow-lg overflow-hidden">
                 {profileImage ? (
