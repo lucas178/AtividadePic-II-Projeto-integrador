@@ -32,7 +32,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ setScreen }) => {
 
 
   return (
-    <div className="p-6 space-y-6 bg-slate-100 flex flex-col h-full">
+    <div className="p-6 space-y-6 bg-slate-100 flex flex-col h-full overflow-y-auto">
       <div className="flex justify-center py-4">
         <div 
           className="w-28 h-28 bg-white rounded-full shadow-lg cursor-pointer overflow-hidden"
