@@ -23,7 +23,7 @@ const OrderSuccessScreen: React.FC<OrderSuccessScreenProps> = ({ setScreen, late
   }
 
   return (
-    <div className="bg-slate-100 h-full flex flex-col justify-between items-center text-center p-6 animate-fade-in">
+    <div className="bg-slate-100 h-full flex flex-col justify-between items-center text-center p-6 animate-fade-in overflow-y-auto">
       <div className="w-full">
         <div className="flex flex-col items-center justify-center my-8">
           <SuccessCheckIcon />
