@@ -4,17 +4,15 @@ Links do projeto
 
 - Vídeo explicativo - https://mega.nz/file/ZUg0TQ5Z#osBHT4VlEw_CAtyVXwu2ViK-3hJKcMKXqpMACWV1u28
 
-- Informações do projeto 
-
+Informações do projeto 
 Dados para acesso a aba administrativa
 - Usuário: admin
 - Senha: admin123
+- O aplicativo de cupcake tem como objetivo a exposição e venda virtual desses mini bolos adorados e difundidos por todo o mundo, para que o cliente tenha total acesso e visualização do que irá adquirir
 
-O aplicativo de cupcake tem como objetivo a exposição e venda virtual desses mini bolos adorados e difundidos por todo o mundo, para que o cliente tenha total acesso e visualização do que irá adquirir
+Testes
 
-- Testes
-
-Testes de Integração (Backend) Em conformidade com as boas práticas de desenvolvimento e para assegurar a integridade da API, foram desenvolvidos Testes de Integração para as camadas de Controller e Repository. Estes testes garantem que os endpoints da API e a comunicação com o banco de dados estão funcionando corretamente no contexto da aplicação. As classes de teste implementadas estão localizadas no diretório /backend/src/test/java do repositório e incluem: ProdutoControllerIT.java (5 testes): Focados na verificação dos endpoints REST de produtos (listagem, busca por ID) utilizando MockMvc. ClienteRepositoryTest.java (3 testes): Focados na camada de persistência, verificando operações CRUD e consultas personalizadas de clientes. AuthServiceIT.java (2 testes): Focados na integração do serviço de autenticação com o Spring Security e a geração de JWT. Total de Testes: 10 Resultado: Todos os 10 testes de integração e persistência foram executados com sucesso utilizando o comando ./mvnw test, confirmando a correta comunicação entre as camadas da aplicação (Controller, Service, Repository) e a funcionalidade dos principais fluxos da API.
+- Testes de Integração (Backend) Em conformidade com as boas práticas de desenvolvimento e para assegurar a integridade da API, foram desenvolvidos Testes de Integração para as camadas de Controller e Repository. Estes testes garantem que os endpoints da API e a comunicação com o banco de dados estão funcionando corretamente no contexto da aplicação. As classes de teste implementadas estão localizadas no diretório /backend/src/test/java do repositório e incluem: ProdutoControllerIT.java (5 testes): Focados na verificação dos endpoints REST de produtos (listagem, busca por ID) utilizando MockMvc. ClienteRepositoryTest.java (3 testes): Focados na camada de persistência, verificando operações CRUD e consultas personalizadas de clientes. AuthServiceIT.java (2 testes): Focados na integração do serviço de autenticação com o Spring Security e a geração de JWT. Total de Testes: 10 Resultado: Todos os 10 testes de integração e persistência foram executados com sucesso utilizando o comando ./mvnw test, confirmando a correta comunicação entre as camadas da aplicação (Controller, Service, Repository) e a funcionalidade dos principais fluxos da API.
 
 Testes FrontEnd - Conforme foi solicitado, os teste com 5 amigos foram anexados junto ao arquivo word na plataforma do curso
 
