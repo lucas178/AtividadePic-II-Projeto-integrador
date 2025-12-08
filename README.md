@@ -1,4 +1,4 @@
-- Cupcake Mani (app) - Projeto Integrador PIC II - Engenharia de Software
+Cupcake Mani (app) - Projeto Integrador PIC II - Engenharia de Software
 
 Links do projeto
 
@@ -20,6 +20,11 @@ Testes FrontEnd - Conforme foi solicitado, os teste com 5 amigos foram anexados 
 
 Novas Funcionalidades
 
+- Telefone para contato
+- Troco para pagamento na entrega
+- Aba para preenchimento dos dados do cartão para pagamento via crédito ou débito
+- QR code gerado ao selecionar método de pagamento via pix  
+
 De acordo com o pedido desse semestre foram feitas melhorias de algumas funcionalidades:
 
 - Tecnologias Utilizadas
@@ -30,12 +35,12 @@ De acordo com o pedido desse semestre foram feitas melhorias de algumas funciona
 - Segurança: Spring Security com JWT (JSON Web Tokens)
 - Persistência: Spring Data JPA / Hibernate
 - Build: Maven
-- Frontend:
+- Frontend: TypeScript+ Biblioteca React
 - Framework: TypeScript
 - Build Tool: Vite
 - Estilização: Tailwind CSS
-- Banco de Dados:MySQL 8
-- Hospedagem:
+- Banco de Dados:
+- Hospedagem: Vercel
 - Backend: Render.com (Serviço Web Dockerizado)
 - Frontend: Vercel
 - Database: Aiven (MySQL)  
