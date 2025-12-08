@@ -38,15 +38,14 @@ De acordo com o pedido desse semestre foram feitas melhorias de algumas funciona
 - Hospedagem:
 - Backend: Render.com (Serviço Web Dockerizado)
 - Frontend: Vercel
-- Database: Aiven (MySQL)
+- Database: Aiven (MySQL)  
 
-- Metodologia e Ferramentas
-
+- Metodologia e Ferramentas:  
 Este projeto foi desenvolvido utilizando a stack de código Tradicional (Java/React), conforme classificado no PIT_atividade.docx. O código-fonte base do frontend (React/TypeScript) foi gerado inicialmente com o auxílio do Google AI Studio e, em seguida, foi inteiramente refatorado, adaptado e integrado manualmente com a API backend (Java/Spring Boot) para atender aos requisitos da Especificacao_Agil_Cupcake_App_v2.docx.
 
 Aluno
 
-Nome: Lucas Pereira Silva
-RGM: 30292034
-Curso: Engenharia de Software
-Instituição: Universidade Cruzeiro Do Sul Virtual
+Nome: Lucas Pereira Silva  
+RGM: 30292034  
+Curso: Engenharia de Software  
+Instituição: Universidade Cruzeiro Do Sul Virtual  
