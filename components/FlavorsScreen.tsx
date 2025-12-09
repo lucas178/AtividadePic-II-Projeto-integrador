@@ -11,18 +11,18 @@ interface FlavorsScreenProps {
 }
 
 const QuantitySelector: React.FC<{ quantity: number; onQuantityChange: (newQuantity: number) => void }> = ({ quantity, onQuantityChange }) => (
-  <div className="flex items-center justify-center bg-slate-200 rounded-full">
+  <div className="flex items-center justify-center bg-slate-200 dark:bg-slate-700 rounded-full transition-colors duration-300">
     <button
-      onClick={() => onQuantityChange(Math.max(0, quantity - 1))}
-      className="px-3 py-1 text-lg font-bold text-pink-500 rounded-l-full hover:bg-pink-200 transition-colors"
+      onClick={(e) => { e.stopPropagation(); onQuantityChange(Math.max(0, quantity - 1)); }}
+      className="px-3 py-1 text-lg font-bold text-pink-500 rounded-l-full hover:bg-pink-200 dark:hover:bg-pink-900/30 transition-colors"
       aria-label="Diminuir quantidade"
     >
       -
     </button>
-    <span className="px-4 py-1 text-slate-800 font-bold">{quantity}</span>
+    <span className="px-4 py-1 text-slate-800 dark:text-slate-100 font-bold">{quantity}</span>
     <button
-      onClick={() => onQuantityChange(quantity + 1)}
-      className="px-3 py-1 text-lg font-bold text-pink-500 rounded-r-full hover:bg-pink-200 transition-colors"
+      onClick={(e) => { e.stopPropagation(); onQuantityChange(quantity + 1); }}
+      className="px-3 py-1 text-lg font-bold text-pink-500 rounded-r-full hover:bg-pink-200 dark:hover:bg-pink-900/30 transition-colors"
       aria-label="Aumentar quantidade"
     >
       +
@@ -31,12 +31,12 @@ const QuantitySelector: React.FC<{ quantity: number; onQuantityChange: (newQuant
 );
 
 const CupcakeCard: React.FC<{ cupcake: Cupcake; quantity: number; onQuantityChange: (newQuantity: number) => void; onClick: () => void }> = ({ cupcake, quantity, onQuantityChange, onClick }) => (
-  <div className="flex items-center bg-white p-3 rounded-lg shadow-md space-x-4">
+  <div className="flex items-center bg-white dark:bg-slate-800 p-3 rounded-lg shadow-md space-x-4 transition-colors duration-300">
     <button onClick={onClick} className="flex-shrink-0">
         <img src={cupcake.image} alt={cupcake.name} className="w-16 h-16 rounded-md object-cover" />
     </button>
     <div className="flex-grow cursor-pointer" onClick={onClick}>
-      <h3 className="font-bold text-slate-800">{cupcake.name}</h3>
+      <h3 className="font-bold text-slate-800 dark:text-white">{cupcake.name}</h3>
       <p className="text-sm text-pink-500 font-semibold">R$ {cupcake.price.toFixed(2)}</p>
     </div>
     <QuantitySelector quantity={quantity} onQuantityChange={onQuantityChange} />
@@ -55,10 +55,10 @@ const CupcakeDetailModal: React.FC<{
       onClick={onClose}
     >
       <div 
-        className="bg-slate-50 rounded-2xl shadow-2xl p-6 w-full max-w-sm m-4 max-h-[90vh] overflow-y-auto relative flex flex-col space-y-4"
+        className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-2xl p-6 w-full max-w-sm m-4 max-h-[90vh] overflow-y-auto relative flex flex-col space-y-4 transition-colors duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={onClose} className="absolute top-4 right-4 text-slate-500 hover:text-slate-800 transition-colors z-10">
+        <button onClick={onClose} className="absolute top-4 right-4 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors z-10">
           <CloseIcon className="h-7 w-7" />
         </button>
         
@@ -66,38 +66,38 @@ const CupcakeDetailModal: React.FC<{
 
         <div className="flex justify-between items-start">
              <div>
-                <h2 className="text-2xl font-bold text-slate-800">{cupcake.name}</h2>
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-white">{cupcake.name}</h2>
                 <p className="text-lg text-pink-500 font-semibold">R$ {cupcake.price.toFixed(2)}</p>
-                <p className="text-sm text-slate-500">Aprox. {cupcake.weight}g</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Aprox. {cupcake.weight}g</p>
             </div>
             <QuantitySelector quantity={quantity} onQuantityChange={onQuantityChange} />
         </div>
 
         <div>
-          <h3 className="font-bold text-slate-700 border-b pb-1 mb-2">Ingredientes</h3>
-          <ul className="list-disc list-inside text-slate-600 text-sm space-y-1">
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 border-b dark:border-slate-700 pb-1 mb-2">Ingredientes</h3>
+          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 text-sm space-y-1">
             {cupcake.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
           </ul>
         </div>
 
         <div>
-           <h3 className="font-bold text-slate-700 border-b pb-1 mb-2">Avaliações</h3>
+           <h3 className="font-bold text-slate-700 dark:text-slate-200 border-b dark:border-slate-700 pb-1 mb-2">Avaliações</h3>
             {cupcake.reviews.length > 0 ? (
                 <div className="space-y-3">
                 {cupcake.reviews.map((review, i) => (
-                    <div key={i} className="bg-white p-3 rounded-lg">
+                    <div key={i} className="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
                     <div className="flex justify-between items-center">
-                        <p className="font-semibold text-sm text-slate-800">{review.user}</p>
+                        <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">{review.user}</p>
                         <div className="flex">
                         {[...Array(5)].map((_, j) => <StarIcon key={j} filled={j < review.rating} />)}
                         </div>
                     </div>
-                    <p className="text-sm text-slate-600 mt-1 italic">"{review.comment}"</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 italic">"{review.comment}"</p>
                     </div>
                 ))}
                 </div>
             ) : (
-                <p className="text-sm text-slate-500 italic">Ainda não há avaliações para este cupcake.</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 italic">Ainda não há avaliações para este cupcake.</p>
             )}
         </div>
       </div>
@@ -118,7 +118,7 @@ const FlavorsScreen: React.FC<FlavorsScreenProps> = ({ setScreen, cart, updateCa
   };
 
   return (
-    <div className="bg-slate-100 h-full flex flex-col">
+    <div className="bg-slate-100 dark:bg-slate-950 h-full flex flex-col transition-colors duration-300">
       <Header title="SABORES" onBack={() => setScreen(Screen.Home)} />
       <div className="p-6 space-y-4 flex-grow overflow-y-auto">
         {cupcakes.map(cupcake => (
@@ -132,7 +132,7 @@ const FlavorsScreen: React.FC<FlavorsScreenProps> = ({ setScreen, cart, updateCa
         ))}
       </div>
        {totalItems > 0 && (
-        <div className="p-6 sticky bottom-0 bg-slate-100 border-t border-slate-200">
+        <div className="p-6 sticky bottom-0 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
             <button 
               onClick={() => setScreen(Screen.Checkout)}
               className="w-full bg-pink-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-pink-600 transition-colors shadow-lg flex justify-between items-center"
