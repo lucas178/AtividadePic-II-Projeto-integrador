@@ -23,30 +23,30 @@ const AdminLoginScreen: React.FC<AdminLoginScreenProps> = ({ setScreen, onLogin 
     };
 
     return (
-        <div className="bg-slate-100 h-full flex flex-col">
+        <div className="bg-slate-100 dark:bg-slate-950 h-full flex flex-col transition-colors duration-300">
             <Header title="Login Administrativo" onBack={() => setScreen(Screen.Home)} />
             <div className="flex-grow flex flex-col justify-center items-center p-6 space-y-6">
-                <div className="w-28 h-28 bg-white rounded-full shadow-lg overflow-hidden">
+                <div className="w-28 h-28 bg-white dark:bg-slate-800 rounded-full shadow-lg overflow-hidden ring-4 ring-white dark:ring-slate-700">
                   <LogoIcon className="w-full h-full" />
                 </div>
                 <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
                     <div>
-                        <label className="text-sm font-semibold text-slate-500 px-1">Usuário</label>
+                        <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 px-1">Usuário</label>
                         <input
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="w-full p-3 mt-1 bg-black text-white border border-slate-600 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400"
+                            className="w-full p-3 mt-1 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400 dark:placeholder:text-slate-500"
                             autoComplete="username"
                         />
                     </div>
                     <div>
-                        <label className="text-sm font-semibold text-slate-500 px-1">Senha</label>
+                        <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 px-1">Senha</label>
                         <input
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-3 mt-1 bg-black text-white border border-slate-600 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400"
+                            className="w-full p-3 mt-1 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400 dark:placeholder:text-slate-500"
                             autoComplete="current-password"
                         />
                     </div>
