@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cupcake Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+             colors: {
+                slate: {
+                    850: '#1e293b',
+                    950: '#020617',
+                }
+             }
+          }
+        }
+      }
+    </script>
   <script type="importmap">
 {
   "imports": {
@@ -24,7 +39,6 @@
     animation: fade-in 0.5s ease-out forwards;
   }
 </style>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-slate-800">
     <div id="root"></div>
