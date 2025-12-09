@@ -14,38 +14,38 @@ const OrdersScreen: React.FC<{
   setScreen: (screen: Screen) => void;
   orderHistory: Order[];
 }> = ({ setScreen, orderHistory }) => (
-    <div className="bg-slate-100 flex flex-col h-full">
+    <div className="bg-slate-100 dark:bg-slate-950 flex flex-col h-full transition-colors duration-300">
         <Header title="MEUS PEDIDOS" onBack={() => setScreen(Screen.Home)} />
         <div className="p-6 space-y-4 flex-grow overflow-y-auto">
             {orderHistory.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
-                    <p className="text-slate-500">Nenhum pedido encontrado.</p>
+                    <p className="text-slate-500 dark:text-slate-400">Nenhum pedido encontrado.</p>
                 </div>
             ) : (
                 orderHistory.map(order => (
-                    <div key={order.id} className="bg-white p-4 rounded-lg shadow-md animate-fade-in">
-                        <div className="flex justify-between items-center mb-2 pb-2 border-b border-slate-200">
+                    <div key={order.id} className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md animate-fade-in transition-colors duration-300">
+                        <div className="flex justify-between items-center mb-2 pb-2 border-b border-slate-200 dark:border-slate-700">
                             <div>
-                                <h3 className="font-bold text-slate-800">Pedido #{order.id.slice(-6)}</h3>
-                                <p className="text-xs text-slate-500">{order.date.toLocaleString('pt-BR')}</p>
+                                <h3 className="font-bold text-slate-800 dark:text-slate-100">Pedido #{order.id.slice(-6)}</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">{order.date.toLocaleString('pt-BR')}</p>
                             </div>
                             <span className="text-lg font-bold text-pink-500">R$ {order.total.toFixed(2)}</span>
                         </div>
                         <div className="space-y-1 mt-2">
                             {order.items.map(item => (
-                                <div key={item.cupcake.id} className="flex justify-between text-sm text-slate-600">
+                                <div key={item.cupcake.id} className="flex justify-between text-sm text-slate-600 dark:text-slate-300">
                                     <span>{item.quantity}x {item.cupcake.name}</span>
                                     <span className="font-medium">R$ {(item.quantity * item.cupcake.price).toFixed(2)}</span>
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-2 pt-2 border-t border-slate-200/60">
-                            <p className="text-xs text-slate-500">
-                                Pago com: <span className="font-semibold text-slate-600">{order.paymentMethod}</span>
+                        <div className="mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-700">
+                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                                Pago com: <span className="font-semibold text-slate-600 dark:text-slate-300">{order.paymentMethod}</span>
                             </p>
                             {order.paymentMethod === 'Dinheiro na Entrega' && order.changeDetails?.needsChange && (
-                                <p className="text-xs text-slate-500">
-                                    Troco para: <span className="font-semibold text-slate-600">R$ {order.changeDetails.forAmount?.toFixed(2)}</span>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">
+                                    Troco para: <span className="font-semibold text-slate-600 dark:text-slate-300">R$ {order.changeDetails.forAmount?.toFixed(2)}</span>
                                 </p>
                             )}
                         </div>
@@ -64,6 +64,9 @@ const App: React.FC = () => {
   const [latestOrder, setLatestOrder] = useState<Order | null>(null);
   const [cupcakes, setCupcakes] = useState<Cupcake[]>(CUPCAKE_FLAVORS);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   const updateCart = (cupcake: Cupcake, quantity: number) => {
     setCart(prevCart => {
@@ -141,7 +144,7 @@ const App: React.FC = () => {
   const renderScreen = () => {
     switch (screen) {
       case Screen.Profile:
-        return <ProfileScreen setScreen={setScreen} />;
+        return <ProfileScreen setScreen={setScreen} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />;
       case Screen.Flavors:
         return <FlavorsScreen setScreen={setScreen} cart={cart} updateCart={updateCart} cupcakes={cupcakes} />;
       case Screen.Orders:
@@ -173,13 +176,15 @@ const App: React.FC = () => {
   };
 
   return (
-    <main className="flex justify-center items-center min-h-screen p-4 bg-slate-900">
-      <div className="w-full max-w-sm h-[800px] max-h-[90vh] bg-slate-100 rounded-3xl shadow-2xl overflow-hidden ring-4 ring-slate-700">
-        <div className="w-full h-full">
-            {renderScreen()}
+    <div className={isDarkMode ? 'dark' : ''}>
+        <main className="flex justify-center items-center min-h-screen p-4 bg-slate-900 transition-colors duration-500">
+        <div className="w-full max-w-sm h-[800px] max-h-[90vh] bg-slate-100 dark:bg-slate-950 rounded-3xl shadow-2xl overflow-hidden ring-4 ring-slate-700 dark:ring-slate-600 transition-all duration-300">
+            <div className="w-full h-full text-slate-900 dark:text-slate-100">
+                {renderScreen()}
+            </div>
         </div>
-      </div>
-    </main>
+        </main>
+    </div>
   );
 };
 
