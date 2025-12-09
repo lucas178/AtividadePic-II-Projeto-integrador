@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Screen } from '../types';
 import Header from './Header';
-import { ProfileIcon, CameraCaptureIcon, CloseIcon, WarningIcon } from './Icons';
+import { ProfileIcon, CameraCaptureIcon, CloseIcon, WarningIcon, SunIcon, MoonIcon } from './Icons';
 
 const InputField: React.FC<{ label: string; type?: string }> = ({ label, type = 'text' }) => (
     <div>
-        <label className="text-sm font-semibold text-slate-500 px-1">{label}</label>
+        <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 px-1">{label}</label>
         <input 
             type={type} 
-            className="w-full p-3 bg-black text-white border border-slate-600 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400"
+            className="w-full p-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition placeholder:text-slate-400 dark:placeholder:text-slate-500"
         />
     </div>
 );
@@ -97,29 +97,51 @@ const CameraView: React.FC<{
   );
 };
 
+interface ProfileScreenProps {
+    setScreen: (screen: Screen) => void;
+    isDarkMode: boolean;
+    toggleTheme: () => void;
+}
 
-const ProfileScreen: React.FC<{ setScreen: (screen: Screen) => void; }> = ({ setScreen }) => {
+const ProfileScreen: React.FC<ProfileScreenProps> = ({ setScreen, isDarkMode, toggleTheme }) => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [showCamera, setShowCamera] = useState(false);
   
   return (
-    <div className="bg-slate-100 h-full flex flex-col">
+    <div className="bg-slate-100 dark:bg-slate-950 h-full flex flex-col transition-colors duration-300">
       <Header title="MEU PERFIL" onBack={() => setScreen(Screen.Home)} />
       <div className="p-6 space-y-6 flex-grow overflow-y-auto">
         <div className="flex flex-col items-center space-y-4">
-            <div className="w-24 h-24 rounded-full bg-slate-300 flex items-center justify-center shadow-lg overflow-hidden">
+            <div className="w-24 h-24 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center shadow-lg overflow-hidden">
                 {profileImage ? (
                   <img src={profileImage} alt="Foto de perfil" className="w-full h-full object-cover" />
                 ) : (
-                  <ProfileIcon className="w-16 h-16 text-slate-500" />
+                  <ProfileIcon className="w-16 h-16 text-slate-500 dark:text-slate-400" />
                 )}
             </div>
-            <button onClick={() => setShowCamera(true)} className="bg-white text-slate-700 font-bold py-2 px-6 rounded-lg shadow-md hover:bg-pink-50 transition-colors">
+            <button onClick={() => setShowCamera(true)} className="bg-white dark:bg-slate-800 text-slate-700 dark:text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-pink-50 dark:hover:bg-slate-700 transition-colors">
                 ALTERAR FOTO
             </button>
         </div>
         
         <div className="space-y-4">
+            <div className="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+                <div className="flex items-center space-x-3">
+                    {isDarkMode ? <MoonIcon className="text-pink-400" /> : <SunIcon className="text-yellow-500" />}
+                    <span className="font-semibold text-slate-700 dark:text-slate-200">
+                        {isDarkMode ? 'Modo Escuro' : 'Modo Claro'}
+                    </span>
+                </div>
+                <button 
+                    onClick={toggleTheme}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 ${isDarkMode ? 'bg-pink-500' : 'bg-slate-300'}`}
+                >
+                    <span 
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isDarkMode ? 'translate-x-6' : 'translate-x-1'}`} 
+                    />
+                </button>
+            </div>
+
             <InputField label="NOME" />
             <InputField label="EMAIL" type="email" />
             <InputField label="SENHA" type="password" />
