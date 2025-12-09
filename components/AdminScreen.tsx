@@ -18,7 +18,7 @@ const TabButton: React.FC<{ label: string; isActive: boolean; onClick: () => voi
         className={`flex-1 py-3 text-sm font-bold uppercase tracking-wider transition-colors ${
             isActive
                 ? 'bg-pink-500 text-white shadow-inner'
-                : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
+                : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600'
         }`}
     >
         {label}
@@ -92,35 +92,35 @@ const FlavorsManager: React.FC<Pick<AdminScreenProps, 'cupcakes' | 'onAdd' | 'on
 
     return (
         <div className="space-y-6">
-            <div className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-bold text-slate-700 mb-4 border-b pb-2">{editingId ? 'Editar Cupcake' : 'Adicionar Novo Cupcake'}</h2>
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md transition-colors duration-300">
+                <h2 className="text-xl font-bold text-slate-700 dark:text-white mb-4 border-b dark:border-slate-700 pb-2">{editingId ? 'Editar Cupcake' : 'Adicionar Novo Cupcake'}</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <input name="name" value={formState.name} onChange={handleInputChange} placeholder="Nome do Cupcake" className="w-full p-2 border rounded-md" />
+                    <input name="name" value={formState.name} onChange={handleInputChange} placeholder="Nome do Cupcake" className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white" />
                     <div className="flex space-x-2">
-                         <input name="price" type="number" step="0.01" value={formState.price} onChange={handleInputChange} placeholder="Preço (Ex: 8.50)" className="w-1/2 p-2 border rounded-md" />
-                         <input name="weight" type="number" value={formState.weight} onChange={handleInputChange} placeholder="Peso (g) Ex: 100" className="w-1/2 p-2 border rounded-md" />
+                         <input name="price" type="number" step="0.01" value={formState.price} onChange={handleInputChange} placeholder="Preço (Ex: 8.50)" className="w-1/2 p-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white" />
+                         <input name="weight" type="number" value={formState.weight} onChange={handleInputChange} placeholder="Peso (g) Ex: 100" className="w-1/2 p-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white" />
                     </div>
-                    <input name="image" value={formState.image} onChange={handleInputChange} placeholder="URL da Imagem" className="w-full p-2 border rounded-md" />
-                    <textarea name="ingredients" value={formState.ingredients} onChange={handleInputChange} placeholder="Ingredientes (um por linha)" className="w-full p-2 border rounded-md" rows={4}></textarea>
+                    <input name="image" value={formState.image} onChange={handleInputChange} placeholder="URL da Imagem" className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white" />
+                    <textarea name="ingredients" value={formState.ingredients} onChange={handleInputChange} placeholder="Ingredientes (um por linha)" className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white" rows={4}></textarea>
                     {error && <p className="text-red-500 text-sm">{error}</p>}
                     <div className="flex space-x-2">
                         <button type="submit" className="w-full bg-pink-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-600 transition-colors">{editingId ? 'Salvar' : 'Adicionar'}</button>
-                        {editingId && <button type="button" onClick={resetForm} className="w-full bg-slate-300 text-slate-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-400">Cancelar</button>}
+                        {editingId && <button type="button" onClick={resetForm} className="w-full bg-slate-300 dark:bg-slate-700 text-slate-700 dark:text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-400 dark:hover:bg-slate-600">Cancelar</button>}
                     </div>
                 </form>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-bold text-slate-700 mb-4 border-b pb-2">Lista de Sabores</h2>
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md transition-colors duration-300">
+                <h2 className="text-xl font-bold text-slate-700 dark:text-white mb-4 border-b dark:border-slate-700 pb-2">Lista de Sabores</h2>
                 <div className="space-y-3">
                     {cupcakes.map(cupcake => (
-                        <div key={cupcake.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                        <div key={cupcake.id} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
                             <div>
-                                <p className="font-semibold text-slate-800">{cupcake.name}</p>
+                                <p className="font-semibold text-slate-800 dark:text-white">{cupcake.name}</p>
                                 <p className="text-sm text-pink-500">R$ {cupcake.price.toFixed(2)} - {cupcake.weight}g</p>
                             </div>
                             <div className="flex space-x-3">
-                                <button onClick={() => handleEdit(cupcake)} className="text-slate-500 hover:text-blue-600"><EditIcon /></button>
-                                <button onClick={() => handleDelete(cupcake.id)} className="text-slate-500 hover:text-red-600"><DeleteIcon /></button>
+                                <button onClick={() => handleEdit(cupcake)} className="text-slate-500 dark:text-slate-400 hover:text-blue-600"><EditIcon /></button>
+                                <button onClick={() => handleDelete(cupcake.id)} className="text-slate-500 dark:text-slate-400 hover:text-red-600"><DeleteIcon /></button>
                             </div>
                         </div>
                     ))}
@@ -131,25 +131,25 @@ const FlavorsManager: React.FC<Pick<AdminScreenProps, 'cupcakes' | 'onAdd' | 'on
 };
 
 const OrderHistory: React.FC<{ orders: Order[] }> = ({ orders }) => (
-    <div className="bg-white p-4 rounded-lg shadow-md space-y-4">
-        {orders.length === 0 ? <p className="text-slate-500 text-center">Nenhum pedido encontrado.</p> :
+    <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md space-y-4 transition-colors duration-300">
+        {orders.length === 0 ? <p className="text-slate-500 dark:text-slate-400 text-center">Nenhum pedido encontrado.</p> :
             orders.map(order => (
-                <div key={order.id} className="p-3 bg-slate-50 rounded-lg border">
-                    <div className="flex justify-between items-start pb-2 mb-2 border-b">
+                <div key={order.id} className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border dark:border-slate-600">
+                    <div className="flex justify-between items-start pb-2 mb-2 border-b dark:border-slate-600">
                         <div>
-                           <p className="font-bold text-slate-800">{order.customer.name}</p>
-                           <p className="text-xs text-slate-500">{order.customer.email} | {order.customer.phone}</p>
-                           <p className="text-xs text-slate-500 mt-1">Pedido #{order.id.slice(-6)} - {order.date.toLocaleDateString('pt-BR')}</p>
+                           <p className="font-bold text-slate-800 dark:text-white">{order.customer.name}</p>
+                           <p className="text-xs text-slate-500 dark:text-slate-300">{order.customer.email} | {order.customer.phone}</p>
+                           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Pedido #{order.id.slice(-6)} - {order.date.toLocaleDateString('pt-BR')}</p>
                         </div>
                         <span className="font-bold text-pink-500">R$ {order.total.toFixed(2)}</span>
                     </div>
-                     <div className="text-xs text-slate-600 space-y-1">
+                     <div className="text-xs text-slate-600 dark:text-slate-300 space-y-1">
                         {order.items.map(item => <p key={item.cupcake.id}>{item.quantity}x {item.cupcake.name}</p>)}
                      </div>
-                     <div className="text-xs text-slate-500 mt-2 pt-2 border-t">
+                     <div className="text-xs text-slate-500 dark:text-slate-400 mt-2 pt-2 border-t dark:border-slate-600">
                         <p><strong>Pagamento:</strong> {order.paymentMethod}</p>
                         {order.paymentMethod === 'Dinheiro na Entrega' && order.changeDetails?.needsChange && (
-                            <p className="font-semibold text-blue-600">
+                            <p className="font-semibold text-blue-600 dark:text-blue-400">
                                 Troco para: R$ {order.changeDetails.forAmount?.toFixed(2)}
                             </p>
                         )}
@@ -178,14 +178,14 @@ const UserManagement: React.FC<{ orders: Order[] }> = ({ orders }) => {
     const userEmails = Object.keys(ordersByUser);
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow-md space-y-4">
-             {userEmails.length === 0 ? <p className="text-slate-500 text-center">Nenhum cliente encontrado.</p> :
+        <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md space-y-4 transition-colors duration-300">
+             {userEmails.length === 0 ? <p className="text-slate-500 dark:text-slate-400 text-center">Nenhum cliente encontrado.</p> :
                 userEmails.map(email => (
                     <div key={email}>
-                        <button onClick={() => setSelectedUser(selectedUser === email ? null : email)} className="w-full text-left p-3 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">
-                            <p className="font-bold text-slate-800">{ordersByUser[email].name}</p>
-                            <p className="text-sm text-slate-500">{email}</p>
-                             <p className="text-sm text-slate-500">{ordersByUser[email].phone}</p>
+                        <button onClick={() => setSelectedUser(selectedUser === email ? null : email)} className="w-full text-left p-3 bg-slate-100 dark:bg-slate-700 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                            <p className="font-bold text-slate-800 dark:text-white">{ordersByUser[email].name}</p>
+                            <p className="text-sm text-slate-500 dark:text-slate-300">{email}</p>
+                             <p className="text-sm text-slate-500 dark:text-slate-300">{ordersByUser[email].phone}</p>
                             <p className="text-xs text-pink-500 mt-1">{ordersByUser[email].orders.length} pedido(s)</p>
                         </button>
                         {selectedUser === email && (
@@ -205,15 +205,15 @@ const AdminScreen: React.FC<AdminScreenProps> = ({ cupcakes, orderHistory, onAdd
     const [activeTab, setActiveTab] = useState('flavors');
 
     return (
-        <div className="bg-slate-100 h-full flex flex-col">
-            <div className="relative flex items-center justify-center p-4 border-b bg-white">
-                <h1 className="text-xl font-bold text-slate-700 tracking-wider uppercase">Painel Administrativo</h1>
+        <div className="bg-slate-100 dark:bg-slate-950 h-full flex flex-col transition-colors duration-300">
+            <div className="relative flex items-center justify-center p-4 border-b dark:border-slate-800 bg-white dark:bg-slate-800">
+                <h1 className="text-xl font-bold text-slate-700 dark:text-white tracking-wider uppercase">Painel Administrativo</h1>
                 <button onClick={onLogout} className="absolute right-4 bg-red-500 text-white font-bold py-2 px-3 rounded-lg hover:bg-red-600 transition-colors text-sm">
                     Sair
                 </button>
             </div>
             
-            <div className="flex">
+            <div className="flex bg-slate-200 dark:bg-slate-700">
                 <TabButton label="Sabores" isActive={activeTab === 'flavors'} onClick={() => setActiveTab('flavors')} />
                 <TabButton label="Pedidos" isActive={activeTab === 'orders'} onClick={() => setActiveTab('orders')} />
                 <TabButton label="Usuários" isActive={activeTab === 'users'} onClick={() => setActiveTab('users')} />
@@ -222,7 +222,6 @@ const AdminScreen: React.FC<AdminScreenProps> = ({ cupcakes, orderHistory, onAdd
             <div className="p-6 flex-grow overflow-y-auto">
                 {activeTab === 'flavors' && <FlavorsManager cupcakes={cupcakes} onAdd={onAdd} onUpdate={onUpdate} onDelete={onDelete} />}
                 {activeTab === 'orders' && <OrderHistory orders={orderHistory} />}
-                {/* FIX: Corrected typo from `active-tab` to `activeTab` to match the state variable name. */}
                 {activeTab === 'users' && <UserManagement orders={orderHistory} />}
             </div>
         </div>
