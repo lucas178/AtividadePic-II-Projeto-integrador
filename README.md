@@ -3,6 +3,7 @@ Cupcake Mani (app) - Projeto Integrador PIC II - Engenharia de Software
 Links do projeto
 
 - Evidências para o laudo de qualidade do sistema e o vídeo explicativo de como funciona o app - https://mega.nz/folder/cJowja4J#hvg__L1vmdS5yWAu9zuX4g
+- Chave para decodificação do vídeo caso peça - hvg__L1vmdS5yWAu9zuX4g
 
 Informações do projeto 
 Dados para acesso a aba administrativa
